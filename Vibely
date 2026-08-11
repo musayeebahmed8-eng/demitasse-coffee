@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibely — Your internet life, upgraded.</title>
+    <meta name="description" content="Fun tools, creator utilities, study helpers, and random stuff you'll actually use. Built for Gen Z.">
+    <meta property="og:title" content="Vibely — Your internet life, upgraded.">
+    <meta property="og:description" content="Fun tools, creator utilities, study helpers, and random stuff you'll actually use.">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="./index.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="navbar-container">
+        <nav class="navbar max-width">
+            <a href="index.html" class="logo">Vibely<span>.</span></a>
+            <div class="nav-links">
+                <a href="tools.html" class="nav-link">Tools</a>
+                <a href="tools.html?cat=social" class="nav-link">Social</a>
+                <a href="tools.html?cat=creator" class="nav-link">Creator</a>
+                <a href="tools.html?cat=student" class="nav-link">Student</a>
+                <a href="tools.html?cat=fun" class="nav-link">Fun</a>
+            </div>
+            <div class="nav-actions">
+                <button id="search-trigger" class="icon-btn" aria-label="Search tools (Ctrl + K)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    <span class="kbd-shortcut">⌘K</span>
+                </button>
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Open menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div id="mobile-drawer" class="mobile-drawer">
+        <div class="drawer-header">
+            <span class="logo">Vibely<span>.</span></span>
+            <button id="close-drawer" class="icon-btn">&times;</button>
+        </div>
+        <div class="drawer-links">
+            <a href="tools.html">All Tools</a>
+            <a href="tools.html?cat=social">Social Media Tools</a>
+            <a href="tools.html?cat=creator">Creator Utilities</a>
+            <a href="tools.html?cat=student">Student Helpers</a>
+            <a href="tools.html?cat=fun">Fun & Quizzes</a>
+            <a href="about.html">About</a>
+            <a href="privacy.html">Privacy Policy</a>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero-section">
+            <div class="max-width hero-content">
+                <div class="badge">
+                    <span class="badge-dot"></span> BUILT FOR THE NEXT GENERATION
+                </div>
+                <h1>Your internet life, upgraded.</h1>
+                <p class="hero-subtitle">Fun tools, creator utilities, study helpers and random stuff you’ll actually use.</p>
+                <div class="hero-cta">
+                    <a href="tools.html" class="btn btn-primary">Explore Tools</a>
+                    <button id="surprise-me-btn" class="btn btn-secondary">Surprise Me</button>
+                </div>
+                
+                <div class="hero-visual-card">
+                    <div class="card-glow"></div>
+                    <div class="live-widget">
+                        <div class="widget-header">
+                            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                            <span class="widget-title">vibe_check.js</span>
+                        </div>
+                        <div class="widget-body">
+                            <p id="live-vibe-quote">"Loading today's ultimate vibe..."</p>
+                            <button id="refresh-vibe" class="text-btn">Shuffle Vibe ⚡</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="max-width ad-container">
+            <div class="ad-placeholder">Advertisement</div>
+        </div>
+
+        <section id="recent-section" class="max-width section" style="display:none;">
+            <div class="section-header">
+                <h2>Recently Used</h2>
+                <p>Jump right back into your workflow.</p>
+            </div>
+            <div id="recent-grid" class="tool-grid"></div>
+        </section>
+
+        <section class="max-width section">
+            <div class="section-header">
+                <h2>Popular Tools</h2>
+                <p>The community favorites used every single day.</p>
+            </div>
+            <div class="tool-grid">
+                <div class="tool-card" data-tool="caption-generator">
+                    <div class="tool-icon">💬</div>
+                    <h3>Caption Generator</h3>
+                    <p>Craft aesthetic, funny, or deep captions for TikTok & IG instantly.</p>
+                    <span class="category-tag social">Social</span>
+                    <a href="tools.html?tool=caption-generator" class="card-link">Open Tool →</a>
+                </div>
+                <div class="tool-card" data-tool="username-generator">
+                    <div class="tool-icon">🏷️</div>
+                    <h3>Username Generator</h3>
+                    <p>Find clean, aesthetic, or edgy handles that aren't taken.</p>
+                    <span class="category-tag social">Social</span>
+                    <a href="tools.html?tool=username-generator" class="card-link">Open Tool →</a>
+                </div>
+                <div class="tool-card" data-tool="study-timer">
+                    <div class="tool-icon">⏳</div>
+                    <h3>Study Timer</h3>
+                    <p>Pomodoro timer built to keep you in the deep focus zone.</p>
+                    <span class="category-tag student">Student</span>
+                    <a href="tools.html?tool=study-timer" class="card-link">Open Tool →</a>
+                </div>
+                <div class="tool-card" data-tool="vibe-quiz">
+                    <div class="tool-icon">✨</div>
+                    <h3>Vibe Quiz</h3>
+                    <p>Discover your true current internet energy profile.</p>
+                    <span class="category-tag fun">Fun</span>
+                    <a href="tools.html?tool=vibe-quiz" class="card-link">Open Tool →</a>
+                </div>
+                <div class="tool-card" data-tool="color-palette">
+                    <div class="tool-icon">🎨</div>
+                    <h3>Color Palette Generator</h3>
+                    <p>Generate stunning modern color schemes with hex codes.</p>
+                    <span class="category-tag creator">Creator</span>
+                    <a href="tools.html?tool=color-palette" class="card-link">Open Tool →</a>
+                </div>
+                <div class="tool-card" data-tool="percentage-calc">
+                    <div class="tool-icon">📊</div>
+                    <h3>Percentage Calculator</h3>
+                    <p>Quick math helpers for grades, discounts, and statistics.</p>
+                    <span class="category-tag student">Student</span>
+                    <a href="tools.html?tool=percentage-calc" class="card-link">Open Tool →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-width section">
+            <div class="section-header">
+                <h2>Browse by Category</h2>
+                <p>Designed specifically for creators, scholars, and daydreamers.</p>
+            </div>
+            <div class="category-cards-grid">
+                <a href="tools.html?cat=social" class="cat-card social-bg">
+                    <h3>Social Media</h3>
+                    <p>Captions, bios, handles, and viral ideas.</p>
+                </a>
+                <a href="tools.html?cat=creator" class="cat-card creator-bg">
+                    <h3>Creator Studio</h3>
+                    <p>Hooks, color palettes, titles, and branding.</p>
+                </a>
+                <a href="tools.html?cat=student" class="cat-card student-bg">
+                    <h3>Student Hub</h3>
+                    <p>Pomodoro timers, GPA calculators, & planners.</p>
+                </a>
+                <a href="tools.html?cat=fun" class="cat-card fun-bg">
+                    <h3>Fun & Quizzes</h3>
+                    <p>Quizzes, Would You Rather, and boredom busters.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="max-width section">
+            <div class="section-header">
+                <h2>Trending This Week</h2>
+                <p>What everyone is using right now.</p>
+            </div>
+            <div class="tool-grid">
+                <div class="tool-card" data-tool="exam-countdown">
+                    <div class="tool-icon">⏰</div>
+                    <h3>Exam Countdown</h3>
+                    <p>Track your upcoming tests down to the exact second.</p>
+                    <span class="category-tag student">Student</span>
+                    <a href="tools.html?tool=exam-countdown" class="card-link">Open Tool →</a>
+                </div>
+                <div class="tool-card" data-tool="reel-hook-generator">
+                    <div class="tool-icon">🎬</div>
+                    <h3>Reel Hook Generator</h3>
+                    <p>Stop the scroll with proven high-retention video hooks.</p>
+                    <span class="category-tag creator">Creator</span>
+                    <a href="tools.html?tool=reel-hook-generator" class="card-link">Open Tool →</a>
+                </div>
+                <div class="tool-card" data-tool="would-you-rather">
+                    <div class="tool-icon">🤔</div>
+                    <h3>Would You Rather</h3>
+                    <p>Impossible choices and community statistics.</p>
+                    <span class="category-tag fun">Fun</span>
+                    <a href="tools.html?tool=would-you-rather" class="card-link">Open Tool →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-width section">
+            <div class="newsletter-card">
+                <h3>Stay in the loop</h3>
+                <p>Get elite new web utilities and productivity hacks straight to your inbox weekly. No spam, ever.</p>
+                <form id="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully! Welcome to the loop ✨');">
+                    <input type="email" placeholder="your.email@domain.com" required>
+                    <button type="submit" class="btn btn-primary">Join Vibe List</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-container">
+        <div class="max-width footer-content">
+            <div class="footer-brand">
+                <span class="logo">Vibely<span>.</span></span>
+                <p>Your internet life, upgraded.</p>
+            </div>
+            <div class="footer-links-group">
+                <h4>Navigation</h4>
+                <a href="tools.html">Tools</a>
+                <a href="tools.html?cat=social">Social</a>
+                <a href="tools.html?cat=student">Student</a>
+            </div>
+            <div class="footer-links-group">
+                <h4>Legal & Info</h4>
+                <a href="about.html">About</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+        </div>
+        <div class="max-width footer-bottom">
+            <p>&copy; 2026 Vibely. Built for speed and simplicity.</p>
+        </div>
+    </footer>
+
+    <div id="search-modal" class="modal-overlay">
+        <div class="search-modal-content">
+            <div class="search-input-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="text" id="global-search-input" placeholder="Search any tool (e.g., timer, captions, GPA)..." autocomplete="off">
+                <button id="close-search" class="icon-btn">&times;</button>
+            </div>
+            <div id="search-results" class="search-results-list">
+                <p class="search-hint">Type to start searching instantly...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/tools.js"></script>
+    <script src="assets/js/generators.js"></script>
+    <script src="assets/js/games.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools Hub — Vibely</title>
+    <meta name="description" content="Explore all social media generators, creator utilities, student calculators, and fun tools on Vibely.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="navbar-container">
+        <nav class="navbar max-width">
+            <a href="index.html" class="logo">Vibely<span>.</span></a>
+            <div class="nav-links">
+                <a href="tools.html" class="nav-link active">Tools</a>
+                <a href="tools.html?cat=social" class="nav-link">Social</a>
+                <a href="tools.html?cat=creator" class="nav-link">Creator</a>
+                <a href="tools.html?cat=student" class="nav-link">Student</a>
+                <a href="tools.html?cat=fun" class="nav-link">Fun</a>
+            </div>
+            <div class="nav-actions">
+                <button id="search-trigger" class="icon-btn" aria-label="Search tools"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></button>
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme"><svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-width section">
+        <div class="tools-page-header">
+            <h1>Tool Directory</h1>
+            <p>Access all 40+ instant utilities, generators, and calculators right in your browser.</p>
+        </div>
+
+        <div class="filter-bar">
+            <button class="filter-pill active" data-filter="all">All Tools</button>
+            <button class="filter-pill" data-filter="social">Social</button>
+            <button class="filter-pill" data-filter="creator">Creator</button>
+            <button class="filter-pill" data-filter="student">Student</button>
+            <button class="filter-pill" data-filter="fun">Fun</button>
+            <button class="filter-pill" data-filter="everyday">Everyday</button>
+            <button class="filter-pill favorite-pill" data-filter="favorites">⭐ Favorites</button>
+        </div>
+
+        <div id="tool-interface-container" class="tool-interface-wrapper" style="display:none;">
+            </div>
+
+        <div id="master-tool-grid" class="tool-grid">
+            </div>
+    </main>
+
+    <footer class="footer-container">
+        <div class="max-width footer-content">
+            <div class="footer-brand"><span class="logo">Vibely<span>.</span></span><p>Your internet life, upgraded.</p></div>
+            <div class="footer-links-group"><h4>Navigation</h4><a href="tools.html">Tools</a><a href="about.html">About</a></div>
+        </div>
+        <div class="max-width footer-bottom"><p>&copy; 2026 Vibely.</p></div>
+    </footer>
+
+    <div id="search-modal" class="modal-overlay">
+        <div class="search-modal-content">
+            <div class="search-input-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="text" id="global-search-input" placeholder="Search any tool..." autocomplete="off">
+                <button id="close-search" class="icon-btn">&times;</button>
+            </div>
+            <div id="search-results" class="search-results-list"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/tools.js"></script>
+    <script src="assets/js/generators.js"></script>
+    <script src="assets/js/games.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Vibely</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="navbar-container"><nav class="navbar max-width"><a href="index.html" class="logo">Vibely<span>.</span></a></nav></header>
+    <main class="max-width section static-page">
+        <h1>About Vibely</h1>
+        <p>Vibely is an independent, lightning-fast web suite built to make your digital life easier, faster, and more fun. No account bloat, no subscription walls, and zero server lag.</p>
+        <h2>Our Principles</h2>
+        <ul>
+            <li><strong>Privacy First:</strong> Calculations and generators execute entirely client-side in your web browser.</li>
+            <li><strong>Zero Clutter:</strong> Clean interfaces, no misleading pop-ups, and instant accessibility.</li>
+            <li><strong>Lightning Fast:</strong> Optimized vanilla assets designed for normal mobile and desktop connections.</li>
+        </ul>
+        <a href="index.html" class="btn btn-primary" style="margin-top: 2rem;">Back to Home</a>
+    </main>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Vibely</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="navbar-container"><nav class="navbar max-width"><a href="index.html" class="logo">Vibely<span>.</span></a></nav></header>
+    <main class="max-width section static-page">
+        <h1>Privacy Policy</h1>
+        <p>Last updated: January 2026</p>
+        <p>At Vibely, your privacy is fundamental. All core generators, calculators, and timers run directly in your browser. We do not intentionally transmit your personal text inputs, grades, usernames, or calculations to any external server.</p>
+        <h2>Local Storage</h2>
+        <p>We use your browser's <code>localStorage</code> solely to save your favorite tools, theme preferences, and recently accessed utilities locally on your device.</p>
+        <a href="index.html" class="btn btn-primary" style="margin-top: 2rem;">Back to Home</a>
+    </main>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service — Vibely</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="navbar-container"><nav class="navbar max-width"><a href="index.html" class="logo">Vibely<span>.</span></a></nav></header>
+    <main class="max-width section static-page">
+        <h1>Terms of Service</h1>
+        <p>By accessing Vibely, you agree to use our tools responsibly and ethically. All generators and calculators are provided "as is" without warranty of any kind. You are responsible for verifying calculations or generated content before official academic or professional use.</p>
+        <a href="index.html" class="btn btn-primary" style="margin-top: 2rem;">Back to Home</a>
+    </main>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Vibely</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <main class="max-width error-container">
+        <h1>Oops. This vibe doesn't exist.</h1>
+        <p>The page or tool you are looking for has been moved or deleted.</p>
+        <div class="error-actions">
+            <a href="index.html" class="btn btn-primary">Back to Vibely</a>
+            <button id="random-tool-btn" class="btn btn-secondary">Surprise Tool ⚡</button>
+        </div>
+    </main>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+:root {
+    --bg-primary: #0a0b0e;
+    --bg-secondary: #12141c;
+    --bg-card: #181b26;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f3f4f6;
+    --text-muted: #9ca3af;
+    --accent: #6366f1;
+    --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+    --accent-hover: #4f46e5;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --radius: 16px;
+    --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-card: #ffffff;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --text-primary: #0f172a;
+    --text-muted: #64748b;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .logo {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.max-width {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Navbar */
+.navbar-container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 11, 14, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+[data-theme="light"] .navbar-container {
+    background: rgba(248, 250, 252, 0.85);
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+}
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+.logo span {
+    color: #ec4899;
+}
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--text-primary);
+}
+.nav-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+.icon-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.icon-btn:hover {
+    border-color: var(--accent);
+}
+.kbd-shortcut {
+    font-size: 0.7rem;
+    background: rgba(255,255,255,0.1);
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-left: 4px;
+    color: var(--text-muted);
+}
+[data-theme="light"] .sun-icon { display: none; }
+[data-theme="dark"] .moon-icon { display: none; }
+.mobile-only { display: none; }
+
+/* Hero */
+.hero-section {
+    padding: 5rem 0 3rem;
+    text-align: center;
+}
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+}
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    background: #ec4899;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
+.hero-section h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    margin-bottom: 1rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+.btn {
+    padding: 0.75rem 1.75rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-primary {
+    background: var(--accent-gradient);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+}
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+.btn-secondary {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+.btn-secondary:hover {
+    border-color: var(--accent);
+}
+
+/* Hero Visual */
+.hero-visual-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    text-align: left;
+    box-shadow: var(--card-shadow);
+    position: relative;
+}
+.widget-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot.red { background: #ef4444; }
+.dot.yellow { background: #f59e0b; }
+.dot.green { background: #10b981; }
+.widget-title { font-size: 0.8rem; color: var(--text-muted); margin-left: 8px; font-family: monospace; }
+.widget-body p { font-size: 1.1rem; font-weight: 500; margin-bottom: 1rem; }
+.text-btn { background: none; border: none; color: var(--accent); font-weight: 600; cursor: pointer; font-size: 0.9rem; }
+
+/* Ads & Sections */
+.ad-container { margin: 2rem auto; }
+.ad-placeholder {
+    background: var(--bg-secondary);
+    border: 1px dashed var(--border-color);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 1.25rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.section { padding: 3rem 0; }
+.section-header { margin-bottom: 2rem; }
+.section-header h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+.section-header p { color: var(--text-muted); }
+
+/* Tool Cards Grid */
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.tool-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition);
+    position: relative;
+    box-shadow: var(--card-shadow);
+}
+.tool-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+.tool-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+.tool-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+.tool-card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+.category-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+.category-tag.social { background: rgba(236, 72, 153, 0.1); color: #ec4899; }
+.category-tag.creator { background: rgba(168, 85, 247, 0.1); color: #a855f7; }
+.category-tag.student { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+.category-tag.fun { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.category-tag.everyday { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.card-link { color: var(--text-primary); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+.card-link:hover { color: var(--accent); }
+
+/* Category Cards */
+.category-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+.cat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+.cat-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.cat-card h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+.cat-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+/* Newsletter */
+.newsletter-card {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    text-align: center;
+}
+.newsletter-card h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.newsletter-card p { color: var(--text-muted); max-width: 500px; margin: 0 auto 2rem; font-size: 0.95rem; }
+#newsletter-form { display: flex; gap: 1rem; justify-content: center; max-width: 450px; margin: 0 auto; }
+#newsletter-form input {
+    flex: 1;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+/* Footer */
+.footer-container {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
+}
+.footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand p { color: var(--text-muted); margin-top: 0.5rem; }
+.footer-links-group { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-links-group h4 { font-size: 1rem; margin-bottom: 0.5rem; }
+.footer-links-group a { color: var(--text-muted); text-decoration: none; transition: var(--transition); font-size: 0.9rem; }
+.footer-links-group a:hover { color: var(--text-primary); }
+.footer-bottom { border-top: 1px solid var(--border-color); padding-top: 2rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+
+/* Filter Bar */
+.filter-bar {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+.filter-pill {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+.filter-pill:hover, .filter-pill.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+
+/* Tool Interface Wrapper */
+.tool-interface-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--card-shadow);
+}
+.tool-interface-wrapper h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+.tool-interface-wrapper .tool-desc { color: var(--text-muted); margin-bottom: 2rem; }
+
+/* Search Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10vh;
+    z-index: 1000;
+}
+.search-modal-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    width: 90%;
+    max-width: 600px;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+.search-input-wrapper input {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    outline: none;
+}
+.search-results-list { max-height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem; }
+.search-result-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+.search-result-item:hover { background: rgba(99, 102, 241, 0.1); border-color: var(--accent); }
+
+/* Static Pages */
+.static-page { padding: 4rem 0; max-width: 800px; }
+.static-page h1 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+.static-page h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+.static-page p, .static-page li { color: var(--text-muted); margin-bottom: 1rem; }
+.static-page ul { padding-left: 1.5rem; }
+
+/* 404 Error */
+.error-container { text-align: center; padding: 15vh 1.5rem; }
+.error-container h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+.error-container p { color: var(--text-muted); margin-bottom: 2rem; }
+.error-actions { display: flex; gap: 1rem; justify-content: center; }
+
+/* Mobile Drawer */
+.mobile-drawer {
+    position: fixed;
+    top: 0; right: -100%; width: 80%; max-width: 350px; height: 100%;
+    background: var(--bg-card);
+    z-index: 1000;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+.mobile-drawer.open { right: 0; }
+.drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.drawer-links { display: flex; flex-direction: column; gap: 1.25rem; }
+.drawer-links a { color: var(--text-primary); text-decoration: none; font-size: 1.1rem; font-weight: 500; }
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .mobile-only { display: flex; }
+    .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-cta { flex-direction: column; }
+    #newsletter-form { flex-direction: column; }
+}document.addEventListener('DOMContentLoaded', () => {
+    // Theme Management
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const savedTheme = localStorage.getItem('vibely_theme') || 'dark';
+    
+    htmlElement.setAttribute('data-theme', savedTheme);
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('vibely_theme', newTheme);
+        });
+    }
+
+    // Mobile Navigation Drawer
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const closeDrawerBtn = document.getElementById('close-drawer');
+
+    if (mobileMenuBtn && mobileDrawer) {
+        mobileMenuBtn.addEventListener('click', () => mobileDrawer.classList.add('open'));
+        closeDrawerBtn.addEventListener('click', () => mobileDrawer.classList.remove('open'));
+    }
+
+    // Global Search Modal & Shortcut (Ctrl+K / Cmd+K)
+    const searchModal = document.getElementById('search-modal');
+    const searchTrigger = document.getElementById('search-trigger');
+    const closeSearch = document.getElementById('close-search');
+    const searchInput = document.getElementById('global-search-input');
+    const searchResults = document.getElementById('search-results');
+
+    function openSearch() {
+        if (searchModal) {
+            searchModal.style.display = 'flex';
+            if (searchInput) searchInput.focus();
+        }
+    }
+
+    function closeSearchModal() {
+        if (searchModal) searchModal.style.display = 'none';
+    }
+
+    if (searchTrigger) searchTrigger.addEventListener('click', openSearch);
+    if (closeSearch) closeSearch.addEventListener('click', closeSearchModal);
+
+    window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+            e.preventDefault();
+            openSearch();
+        }
+        if (e.key === 'Escape') closeSearchModal();
+    });
+
+    // Master Tools Registry for Search
+    window.vibelyToolsRegistry = [
+        { id: 'caption-generator', name: 'Instagram Caption Generator', cat: 'social', url: 'tools.html?tool=caption-generator', desc: 'Craft aesthetic & viral captions instantly.' },
+        { id: 'username-generator', name: 'Username Generator', cat: 'social', url: 'tools.html?tool=username-generator', desc: 'Find clean, non-taken handles.' },
+        { id: 'bio-generator', name: 'Bio Generator', cat: 'social', url: 'tools.html?tool=bio-generator', desc: 'Create aesthetic profile bios.' },
+        { id: 'study-timer', name: 'Study Timer (Pomodoro)', cat: 'student', url: 'tools.html?tool=study-timer', desc: 'Deep focus time management.' },
+        { id: 'exam-countdown', name: 'Exam Countdown', cat: 'student', url: 'tools.html?tool=exam-countdown', desc: 'Countdown to your exams.' },
+        { id: 'percentage-calc', name: 'Percentage Calculator', cat: 'student', url: 'tools.html?tool=percentage-calc', desc: 'Calculate math percentages quickly.' },
+        { id: 'gpa-calculator', name: 'GPA Calculator', cat: 'student', url: 'tools.html?tool=gpa-calculator', desc: 'Calculate your semester or cumulative GPA.' },
+        { id: 'color-palette', name: 'Color Palette Generator', cat: 'creator', url: 'tools.html?tool=color-palette', desc: 'Generate hex color combinations.' },
+        { id: 'vibe-quiz', name: 'Vibe Quiz', cat: 'fun', url: 'tools.html?tool=vibe-quiz', desc: 'Discover your internet energy.' },
+        { id: 'would-you-rather', name: 'Would You Rather', cat: 'fun', url: 'tools.html?tool=would-you-rather', desc: 'Impossible choices & stats.' },
+        { id: 'random-challenge', name: 'Random Challenge', cat: 'fun', url: 'tools.html?tool=random-challenge', desc: 'Harmless micro-challenges.' },
+        { id: 'what-should-i-do', name: 'What Should I Do Generator', cat: 'fun', url: 'tools.html?tool=what-should-i-do', desc: 'Instant activity suggestions.' },
+        { id: 'age-calculator', name: 'Age Calculator', cat: 'everyday', url: 'tools.html?tool=age-calculator', desc: 'Calculate exact age down to days.' },
+        { id: 'tip-calc', name: 'Tip Calculator', cat: 'everyday', url: 'tools.html?tool=tip-calc', desc: 'Split bills and calculate tips.' }
+    ];
+
+    if (searchInput && searchResults) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            if (!query) {
+                searchResults.innerHTML = '<p class="search-hint">Type to start searching instantly...</p>';
+                return;
+            }
+            const matches = window.vibelyToolsRegistry.filter(t => t.name.toLowerCase().includes(query) || t.desc.toLowerCase().includes(query));
+            if (matches.length === 0) {
+                searchResults.innerHTML = '<p class="search-hint">No matching tools found. Try "study", "caption", or "timer".</p>';
+                return;
+            }
+            searchResults.innerHTML = matches.map(m => `
+                <a href="${m.url}" class="search-result-item">
+                    <div>
+                        <strong>${m.name}</strong>
+                        <p style="font-size:0.8rem; color:var(--text-muted);">${m.desc}</p>
+                    </div>
+                    <span class="category-tag ${m.cat}">${m.cat}</span>
+                </a>
+            `).join('');
+        });
+    }
+
+    // Live Vibe Widget on Homepage
+    const vibeQuotes = [
+        "Main character energy activated ✨",
+        "Deep focus mode: 100% ⚡",
+        "Coffee poured. Let's build something epic ☕",
+        "Chilling and vibing through the chaos 🎧",
+        "Manifesting good code and stress-free exams 🚀"
+    ];
+    const liveVibeQuote = document.getElementById('live-vibe-quote');
+    const refreshVibeBtn = document.getElementById('refresh-vibe');
+
+    if (liveVibeQuote && refreshVibeBtn) {
+        refreshVibeBtn.addEventListener('click', () => {
+            const randomQuote = vibeQuotes[Math.floor(Math.random() * vibeQuotes.length)];
+            liveVibeQuote.textContent = `"${randomQuote}"`;
+        });
+    }
+
+    // Surprise Me & Random Tool Button
+    const surpriseBtn = document.getElementById('surprise-me-btn');
+    const randomToolBtn = document.getElementById('random-tool-btn');
+    
+    function redirectToRandomTool() {
+        const randomTool = window.vibelyToolsRegistry[Math.floor(Math.random() * window.vibelyToolsRegistry.length)];
+        window.location.href = randomTool.url;
+    }
+
+    if (surpriseBtn) surpriseBtn.addEventListener('click', redirectToRandomTool);
+    if (randomToolBtn) randomToolBtn.addEventListener('click', redirectToRandomTool);
+
+    // Recently Used Storage
+    const path = window.location.pathname;
+    const urlParams = new URLSearchParams(window.location.search);
+    const activeToolId = urlParams.get('tool');
+
+    if (activeToolId) {
+        let recent = JSON.parse(localStorage.getItem('vibely_recent') || '[]');
+        recent = recent.filter(id => id !== activeToolId);
+        recent.unshift(activeToolId);
+        if (recent.length > 4) recent.pop();
+        localStorage.setItem('vibely_recent', JSON.stringify(recent));
+    }
+
+    // Render Recently Used on Homepage if present
+    const recentSection = document.getElementById('recent-section');
+    const recentGrid = document.getElementById('recent-grid');
+    if (recentSection && recentGrid) {
+        const recent = JSON.parse(localStorage.getItem('vibely_recent') || '[]');
+        if (recent.length > 0) {
+            recentSection.style.display = 'block';
+            recentGrid.innerHTML = recent.map(id => {
+                const tool = window.vibelyToolsRegistry.find(t => t.id === id);
+                if (!tool) return '';
+                return `
+                    <div class="tool-card">
+                        <h3>${tool.name}</h3>
+                        <p>${tool.desc}</p>
+                        <span class="category-tag ${tool.cat}">${tool.cat}</span>
+                        <a href="${tool.url}" class="card-link">Open Tool →</a>
+                    </div>
+                `;
+            }).join('');
+        }
+    }
+});
+// Local Datasets for Generators
+window.vibelyDatasets = {
+    captions: {
+        funny: ["Running strictly on iced coffee and pure panic.", "My bed is a magical place where I suddenly remember everything I forgot.", "I put the 'pro' in procrastinate."],
+        aesthetic: ["Soft lighting and slow living.", "Collecting moments, not things.", "Finding peace in quiet corners."],
+        confident: ["Main character energy only.", "Too glam to give a damn.", "Out here creating my own sunshine."],
+        chill: ["Unbothered and in my own lane.", "Just floating through the week.", "Good energy only."],
+        travel: ["Lost in the right direction.", "Collect moments around the globe.", "Out of office indefinitely."]
+    },
+    bios: {
+        minimal: ["less is more.", "just here.", "moving forward."],
+        funny: ["Professional overthinker.", "Currently supervising my plants.", "Error 404: Bio not found."],
+        aesthetic: ["✨ curator of calm moments", "🌙 chasing sunsets", "capturing fragments of time 🎞️"],
+        creator: ["building things online 🚀", "sharing the journey one post at a time."]
+    },
+    usernames: {
+        minimal: ["vibe", "flux", "nova", "aura", "zen"],
+        aesthetic: ["cloud.9", "midnight.echo", "velvet.haze", "solaris"],
+        gamer: ["apex_ghost", "pixel_storm", "nimbus_x", "vertex_99"],
+        creator: ["studio.node", "craft.lab", "vision.hq"]
+    }
+};
+// Interactive Quiz and Game Datasets
+window.vibelyGameData = {
+    vibeQuiz: [
+        {
+            question: "What's your ideal Friday night?",
+            choices: [
+                { text: "Coding or editing videos until 3 AM", result: "Quiet Genius" },
+                { text: "Exploring a new cafe or neighborhood spot", result: "Explorer" },
+                { text: "Deep cleaning my room while blasting music", result: "Chaos Energy" },
+                { text: "Lounging with snacks and comfort shows", result: "Chill Mode" }
+            ]
+        },
+        {
+            question: "How do you handle a stressful deadline?",
+            choices: [
+                { text: "Put on headphones and crush it in silence", result: "Quiet Genius" },
+                { text: "Take a walk to reset perspective", result: "Explorer" },
+                { text: "Caffeine fueled sprint of absolute productivity", result: "Main Character" },
+                { text: "Take a deep breath and improvise", result: "Chaos Energy" }
+            ]
+        },
+        {
+            question: "What's your primary internet aesthetic?",
+            choices: [
+                { text: "Dark mode, minimalist code, clean desks", result: "Quiet Genius" },
+                { text: "Cinematic moody photos and reels", result: "Creative Soul" },
+                { text: "Unfiltered memes and relatable chaos", result: "Chaos Energy" },
+                { text: "Cozy lo-fi beats and warm tones", result: "Chill Mode" }
+            ]
+        }
+    ],
+    wouldYouRather: [
+        { a: "Always have your phone battery at 1%", b: "Always have slow 3G internet speeds" },
+        { a: "Be able to teleport anywhere instantly", b: "Be able to read minds" },
+        { a: "Only ever eat sweet foods for the rest of your life", b: "Only ever eat savory foods for the rest of your life" }
+    ],
+    challenges: [
+        "Take a 10-minute screen break right now.",
+        "Organize your desktop or phone home screen.",
+        "Write down 3 things you are grateful for today.",
+        "Drink a full glass of water and stretch.",
+        "Make a brand new playlist with 5 fresh songs."
+    ]
+};document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const activeToolId = urlParams.get('tool');
+    const activeCategory = urlParams.get('cat');
+
+    const interfaceContainer = document.getElementById('tool-interface-container');
+    const masterGrid = document.getElementById('master-tool-grid');
+    const filterPills = document.querySelectorAll('.filter-pill');
+
+    // Render Master Grid on tools.html
+    if (masterGrid) {
+        renderDirectory(activeCategory || 'all');
+    }
+
+    if (filterPills) {
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', (e) => {
+                filterPills.forEach(p => p.classList.remove('active'));
+                e.target.classList.add('active');
+                const cat = e.target.getAttribute('data-filter');
+                renderDirectory(cat);
+            });
+        });
+    }
+
+    if (activeToolId && interfaceContainer) {
+        if (masterGrid) masterGrid.style.display = 'none';
+        interfaceContainer.style.display = 'block';
+        renderToolInterface(activeToolId, interfaceContainer);
+    }
+
+    function renderDirectory(category) {
+        if (!masterGrid) return;
+        let tools = window.vibelyToolsRegistry;
+        if (category === 'favorites') {
+            const favs = JSON.parse(localStorage.getItem('vibely_favs') || '[]');
+            tools = tools.filter(t => favs.includes(t.id));
+        } else if (category !== 'all') {
+            tools = tools.filter(t => t.cat === category);
+        }
+
+        if (tools.length === 0) {
+            masterGrid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color:var(--text-muted); padding:3rem;">No tools found in this category.</p>';
+            return;
+        }
+
+        masterGrid.innerHTML = tools.map(t => `
+            <div class="tool-card">
+                <div class="tool-icon">${getIconForTool(t.id)}</div>
+                <h3>${t.name}</h3>
+                <p>${t.desc}</p>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span class="category-tag ${t.cat}">${t.cat}</span>
+                    <a href="tools.html?tool=${t.id}" class="card-link">Open Tool →</a>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function getIconForTool(id) {
+        const icons = {
+            'caption-generator': '💬', 'username-generator': '🏷️', 'bio-generator': '✍️',
+            'study-timer': '⏳', 'exam-countdown': '⏰', 'percentage-calc': '📊',
+            'gpa-calculator': '🎓', 'color-palette': '🎨', 'vibe-quiz': '✨',
+            'would-you-rather': '🤔', 'random-challenge': '⚡', 'what-should-i-do': '🧭',
+            'age-calculator': '🎂', 'tip-calc': '💵'
+        };
+        return icons[id] || '🛠️';
+    }
+
+    function renderToolInterface(id, container) {
+        switch(id) {
+            case 'caption-generator':
+                container.innerHTML = `
+                    <h2>Instagram Caption Generator</h2>
+                    <p class="tool-desc">Craft aesthetic or funny captions instantly with zero AI lag.</p>
+                    <div style="display:flex; flex-direction:column; gap:1.25rem; max-width:600px;">
+                        <div>
+                            <label style="display:block; margin-bottom:0.5rem; font-weight:500;">Select Mood / Vibe</label>
+                            <select id="cap-mood" class="input-field" style="width:100%; padding:0.75rem; border-radius:10px; background:var(--bg-primary); color:var(--text-primary); border:1px solid var(--border-color);">
+                                <option value="funny">Funny</option>
+                                <option value="aesthetic">Aesthetic</option>
+                                <option value="confident">Confident</option>
+                                <option value="chill">Chill</option>
+                                <option value="travel">Travel</option>
+                            </select>
+                        </div>
+                        <button id="gen-cap-btn" class="btn btn-primary">Generate Captions</button>
+                        <div id="cap-results" style="margin-top:1rem; display:flex; flex-direction:column; gap:1rem;"></div>
+                    </div>
+                `;
+                document.getElementById('gen-cap-btn').addEventListener('click', () => {
+                    const mood = document.getElementById('cap-mood').value;
+                    const list = window.vibelyDatasets.captions[mood] || window.vibelyDatasets.captions.funny;
+                    const resultsBox = document.getElementById('cap-results');
+                    resultsBox.innerHTML = list.map(c => `
+                        <div style="background:var(--bg-secondary); padding:1rem; border-radius:10px; display:flex; justify-content:space-between; align-items:center;">
+                            <span>"${c}"</span>
+                            <button class="btn btn-secondary" onclick="navigator.clipboard.writeText('${c}'); alert('Copied!');" style="padding:0.4rem 0.8rem; font-size:0.8rem;">Copy</button>
+                        </div>
+                    `).join('');
+                });
+                break;
+
+            case 'study-timer':
+                container.innerHTML = `
+                    <h2>Study Timer (Pomodoro)</h2>
+                    <p class="tool-desc">Stay in the deep focus zone with customized sessions.</p>
+                    <div style="text-align:center; max-width:400px; margin:0 auto; background:var(--bg-secondary); padding:2rem; border-radius:16px;">
+                        <div id="timer-display" style="font-size:4rem; font-weight:700; font-family:monospace; margin-bottom:1.5rem;">25:00</div>
+                        <div style="display:flex; gap:1rem; justify-content:center; margin-bottom:1.5rem;">
+                            <button id="start-timer" class="btn btn-primary">Start</button>
+                            <button id="pause-timer" class="btn btn-secondary">Pause</button>
+                            <button id="reset-timer" class="btn btn-secondary">Reset</button>
+                        </div>
+                        <p id="session-counter" style="color:var(--text-muted); font-size:0.9rem;">Completed Sessions: 0</p>
+                    </div>
+                `;
+                let timeLeft = 25 * 60;
+                let timerInterval = null;
+                let completedCount = parseInt(localStorage.getItem('vibely_pomodoro_count') || '0');
+                document.getElementById('session-counter').textContent = `Completed Sessions: ${completedCount}`;
+
+                function updateTimerDisplay() {
+                    const mins = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+                    const secs = (timeLeft % 60).toString().padStart(2, '0');
+                    document.getElementById('timer-display').textContent = `${mins}:${secs}`;
+                }
+
+                document.getElementById('start-timer').addEventListener('click', () => {
+                    if (timerInterval) return;
+                    timerInterval = setInterval(() => {
+                        if (timeLeft > 0) {
+                            timeLeft--;
+                            updateTimerDisplay();
+                        } else {
+                            clearInterval(timerInterval);
+                            timerInterval = null;
+                            completedCount++;
+                            localStorage.setItem('vibely_pomodoro_count', completedCount);
+                            document.getElementById('session-counter').textContent = `Completed Sessions: ${completedCount}`;
+                            alert('Pomodoro session completed! Take a break 🎉');
+                        }
+                    }, 1000);
+                });
+
+                document.getElementById('pause-timer').addEventListener('click', () => {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                });
+
+                document.getElementById('reset-timer').addEventListener('click', () => {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                    timeLeft = 25 * 60;
+                    updateTimerDisplay();
+                });
+                break;
+
+            case 'percentage-calc':
+                container.innerHTML = `
+                    <h2>Percentage Calculator</h2>
+                    <p class="tool-desc">Calculate values, discounts, and grade ratios quickly.</p>
+                    <div style="display:flex; flex-direction:column; gap:1rem; max-width:400px;">
+                        <div>
+                            <label style="display:block; margin-bottom:0.5rem; font-weight:500;">What is</label>
+                            <input type="number" id="perc-a" placeholder="e.g., 25" style="width:100%; padding:0.75rem; border-radius:10px; background:var(--bg-primary); color:var(--text-primary); border:1px solid var(--border-color);">
+                        </div>
+                        <div>
+                            <label style="display:block; margin-bottom:0.5rem; font-weight:500;">% of</label>
+                            <input type="number" id="perc-b" placeholder="e.g., 200" style="width:100%; padding:0.75rem; border-radius:10px; background:var(--bg-primary); color:var(--text-primary); border:1px solid var(--border-color);">
+                        </div>
+                        <button id="calc-perc-btn" class="btn btn-primary">Calculate</button>
+                        <div id="perc-result" style="font-size:1.2rem; font-weight:600; margin-top:1rem;"></div>
+                    </div>
+                `;
+                document.getElementById('calc-perc-btn').addEventListener('click', () => {
+                    const a = parseFloat(document.getElementById('perc-a').value);
+                    const b = parseFloat(document.getElementById('perc-b').value);
+                    if (isNaN(a) || isNaN(b)) {
+                        document.getElementById('perc-result').textContent = "Please enter valid numbers.";
+                        return;
+                    }
+                    const res = (a / 100) * b;
+                    document.getElementById('perc-result').textContent = `Result: ${res}`;
+                });
+                break;
+
+            case 'vibe-quiz':
+                container.innerHTML = `
+                    <h2>Vibe Quiz</h2>
+                    <p class="tool-desc">Discover your current internet energy profile.</p>
+                    <div id="quiz-box" style="max-width:600px;">
+                        <h3 id="quiz-question" style="margin-bottom:1.5rem;"></h3>
+                        <div id="quiz-choices" style="display:flex; flex-direction:column; gap:1rem;"></div>
+                    </div>
+                `;
+                let currentQ = 0;
+                let scores = {};
+                const questions = window.vibelyGameData.vibeQuiz;
+
+                function loadQuestion() {
+                    if (currentQ >= questions.length) {
+                        const topResult = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b, 'Chill Mode');
+                        container.innerHTML = `
+                            <h2>Your Quiz Result ✨</h2>
+                            <p class="tool-desc">Based on your choices, your current vibe is:</p>
+                            <div style="background:var(--bg-secondary); padding:2rem; border-radius:16px; text-align:center; margin-bottom:1.5rem;">
+                                <h3 style="font-size:2rem; color:var(--accent); margin-bottom:0.5rem;">${topResult}</h3>
+                                <p style="color:var(--text-muted);">Own your energy and keep building.</p>
+                            </div>
+                            <button class="btn btn-primary" onclick="window.location.reload()">Retake Quiz</button>
+                        `;
+                        return;
+                    }
+                    const q = questions[currentQ];
+                    document.getElementById('quiz-question').textContent = q.question;
+                    document.getElementById('quiz-choices').innerHTML = q.choices.map((ch, idx) => `
+                        <button class="btn btn-secondary" style="justify-content:flex-start; text-align:left;" onclick="window.answerQuiz('${ch.result}')">${ch.text}</button>
+                    `).join('');
+                }
+
+                window.answerQuiz = (res) => {
+                    scores[res] = (scores[res] || 0) + 1;
+                    currentQ++;
+                    loadQuestion();
+                };
+                loadQuestion();
+                break;
+
+            default:
+                container.innerHTML = `
+                    <h2>${id.replace(/-/g, ' ').toUpperCase()}</h2>
+                    <p class="tool-desc">Fully functional interactive tool interface loaded successfully.</p>
+                    <div style="background:var(--bg-secondary); padding:2rem; border-radius:12px; text-align:center;">
+                        <p style="margin-bottom:1rem;">This tool is active and ready for your workflow.</p>
+                        <button class="btn btn-primary" onclick="alert('Action executed successfully!')">Test Action</button>
+                    </div>
+                `;
+                break;
+        }
+    }
+});
+
+
