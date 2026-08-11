@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demitasse Coffee | Specialty Coffee & Community in Brookefield, Bengaluru</title>
+  <meta name="description" content="A Small Step Towards Best Coffee & Community. Visit Demitasse Coffee in BEML Layout 6th Stage, Brookefield, Bengaluru for specialty espresso, handcrafted food, and warm vibes.">
+  
+  <link rel="icon" href="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=64&auto=format&fit=crop&q=80" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & BASE STYLES
+       ========================================================================== */
+    :root {
+      --bg-cream: #FAF7F2;
+      --bg-card: #FFFFFF;
+      --bg-warm-alt: #F3ECE2;
+      --text-dark: #231F20;
+      --text-muted: #625B58;
+      --accent-brown: #5C3A21;
+      --accent-brown-hover: #422917;
+      --accent-gold: #C89D66;
+      --border-color: #E8DFD5;
+      --nav-height: 80px;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Typography Utilities */
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--text-dark);
+    }
+
+    .section-tag {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem auto;
+      font-size: 1.05rem;
+    }
+
+    .text-center { text-align: center; }
+
+    /* Layout Containers */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-padding {
+      padding: 100px 0;
+    }
+
+    @media (max-width: 768px) {
+      .section-padding { padding: 60px 0; }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: all 0.3s var(--transition-smooth);
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-brown);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-brown-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(92, 58, 33, 0.25);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-dark);
+      border: 1px solid var(--text-dark);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--text-dark);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    .btn-light {
+      background-color: #FFFFFF;
+      color: var(--text-dark);
+    }
+
+    .btn-light:hover {
+      background-color: var(--bg-cream);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s var(--transition-smooth), transform 0.8s var(--transition-smooth);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      background-color: rgba(250, 247, 242, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(232, 223, 213, 0.5);
+    }
+
+    .header.scrolled {
+      background-color: rgba(250, 247, 242, 0.98);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      height: 70px;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text-dark);
+    }
+
+    .logo-sub {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--accent-brown);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 2px;
+      background-color: var(--text-dark);
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile Nav Drawer */
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta .btn-nav {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 380px;
+        height: 100vh;
+        background-color: var(--bg-cream);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        padding: 100px 2rem 2rem 2rem;
+        transition: right 0.4s var(--transition-smooth);
+      }
+
+      .mobile-menu.open {
+        right: 0;
+      }
+
+      .mobile-nav-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .mobile-nav-links a {
+        font-family: var(--font-serif);
+        font-size: 1.5rem;
+        color: var(--text-dark);
+      }
+    }
+
+    /* Hamburger Animation */
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-height);
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                  url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+      color: #FFFFFF;
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .hero-tag {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #E8DFD5;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      color: #FFFFFF;
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+      font-weight: 300;
+      max-width: 600px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================================================
+       ABOUT SECTION
+       ========================================================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    .about-image-wrapper {
+      position: relative;
+    }
+
+    .about-img {
+      border-radius: 8px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background-color: var(--accent-brown);
+      color: #FFFFFF;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    @media (max-width: 600px) {
+      .about-badge { right: 10px; bottom: 10px; padding: 1rem; }
+    }
+
+    .about-badge .rating {
+      font-size: 1.8rem;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .about-badge .reviews {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    /* ==========================================================================
+       COFFEE EXPERIENCE SECTION
+       ========================================================================== */
+    .experience {
+      background-color: var(--bg-warm-alt);
+    }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .exp-card {
+      background-color: var(--bg-card);
+      padding: 2.5rem 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .exp-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    }
+
+    .exp-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.5rem;
+      color: var(--accent-brown);
+    }
+
+    .exp-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ==========================================================================
+       MENU PREVIEW SECTION
+       ========================================================================== */
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .tab-btn {
+      padding: 0.6rem 1.5rem;
+      font-size: 0.95rem;
+      border-radius: 30px;
+      border: 1px solid var(--border-color);
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background-color: var(--accent-brown);
+      color: #FFFFFF;
+      border-color: var(--accent-brown);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .menu-category {
+      display: none;
+    }
+
+    .menu-category.active {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .menu-item {
+      background-color: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .menu-item-info h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .menu-item-info p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .menu-notice {
+      background-color: var(--bg-warm-alt);
+      padding: 1rem;
+      text-align: center;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* ==========================================================================
+       WHY PEOPLE LOVE US / REVIEWS
+       ========================================================================== */
+    .stats-bar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: var(--accent-brown);
+      color: #FFFFFF;
+      padding: 2.5rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .review-card {
+      background-color: var(--bg-card);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .review-stars {
+      color: var(--accent-gold);
+      margin-bottom: 1rem;
+    }
+
+    .review-text {
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .review-author {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .review-placeholder-tag {
+      font-size: 0.7rem;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ==========================================================================
+       GALLERY SECTION
+       ========================================================================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      height: 280px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       LOCATION & HOURS SECTION
+       ========================================================================== */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      background-color: var(--bg-card);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .location-grid { grid-template-columns: 1fr; }
+    }
+
+    .location-info {
+      padding: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (max-width: 600px) {
+      .location-info { padding: 2rem; }
+    }
+
+    .info-group {
+      margin-bottom: 2rem;
+    }
+
+    .info-group h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-group p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .map-container {
+      width: 100%;
+      min-height: 400px;
+      height: 100%;
+      background-color: var(--bg-warm-alt);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* ==========================================================================
+       INSTAGRAM & CTA SECTIONS
+       ========================================================================== */
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .insta-item {
+      height: 200px;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .insta-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cta-banner {
+      background: linear-gradient(rgba(35, 31, 32, 0.85), rgba(35, 31, 32, 0.85)), 
+                  url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 100px 1rem;
+    }
+
+    .cta-banner h2 {
+      color: #FFFFFF;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    .footer {
+      background-color: #1A1718;
+      color: #A39D99;
+      padding: 80px 0 30px 0;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 3rem;
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    .footer-brand .logo-title {
+      color: #FFFFFF;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand p {
+      max-width: 300px;
+      line-height: 1.6;
+    }
+
+    .footer-title {
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a:hover {
+      color: #FFFFFF;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Simple Inline SVG Helper Utility */
+    .icon {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <span class="logo-title">DEMITASSE</span>
+        <span class="logo-sub">Coffee & Community</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#menu" class="nav-link">Menu</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#location" class="nav-link">Location</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="tel:+919167265681" class="btn btn-primary btn-nav" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Call Cafe</a>
+        <div class="hamburger" id="hamburger" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-links">
+      <li><a href="#about" onclick="toggleMenu()">About</a></li>
+      <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+      <li><a href="#menu" onclick="toggleMenu()">Menu</a></li>
+      <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
+      <li><a href="#location" onclick="toggleMenu()">Location</a></li>
+    </ul>
+    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 1rem;">
+      <a href="#menu" class="btn btn-primary" onclick="toggleMenu()">View Menu</a>
+      <a href="https://maps.google.com" target="_blank" class="btn btn-secondary" onclick="toggleMenu()">Get Directions</a>
+    </div>
+  </div>
+
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content reveal">
+        <span class="hero-tag">Brookefield, Bengaluru</span>
+        <h1 class="hero-title">Good Coffee.<br>Good People.<br>Good Community.</h1>
+        <p class="hero-sub">A small step towards the best coffee and a better community. Crafted with intention in the heart of Brookefield.</p>
+        <div class="hero-buttons">
+          <a href="#menu" class="btn btn-primary">View Menu</a>
+          <a href="#location" class="btn btn-light">Find Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrapper reveal">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1000" alt="Demitasse Coffee Cafe Interior" class="about-img">
+          <div class="about-badge">
+            <div class="rating">⭐ 4.8</div>
+            <div class="reviews">600+ Google Reviews</div>
+          </div>
+        </div>
+        <div class="reveal">
+          <span class="section-tag">More Than Just Coffee</span>
+          <h2 class="section-title">A Place to Slow Down & Reconnect</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1.25rem;">
+            At <strong>Demitasse Coffee</strong>, we believe that coffee is more than an everyday morning routine—it is a ritual, an art form, and a bridge that brings people together.
+          </p>
+          <p style="color: var(--text-muted); margin-bottom: 2rem;">
+            Tucked away in BEML Layout, Brookefield, our space is thoughtfully designed for those who appreciate meticulously brewed specialty coffee, vibrant conversations, or quiet moments of productivity. Whether you are catching up with friends or finding your focus, you are always part of our community.
+          </p>
+          <a href="#location" class="btn btn-secondary">Visit Us Today</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding experience" id="experience">
+    <div class="container text-center">
+      <span class="section-tag">Craft & Passion</span>
+      <h2 class="section-title">The Demitasse Standard</h2>
+      <p class="section-desc">We pay attention to every detail, from bean sourcing to milk texturing, ensuring every visit is memorable.</p>
+      
+      <div class="exp-grid">
+        <div class="exp-card reveal">
+          <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+          <h3 class="exp-title">Specialty Coffee</h3>
+          <p class="exp-desc">Sourced from renowned Indian estates, ethically grown and light-to-medium roasted for optimal taste notes.</p>
+        </div>
+
+        <div class="exp-card reveal">
+          <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <h3 class="exp-title">Freshly Brewed</h3>
+          <p class="exp-desc">Every extraction is precisely weighed and timed by our passionate baristas for balanced flavor in every cup.</p>
+        </div>
+
+        <div class="exp-card reveal">
+          <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M12 8v4l3 3"/></svg>
+          <h3 class="exp-title">Quality Food</h3>
+          <p class="exp-desc">Handcrafted gourmet sandwiches, fresh bakery items, and sweet treats made to pair seamlessly with your brew.</p>
+        </div>
+
+        <div class="exp-card reveal">
+          <svg class="exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h3 class="exp-title">Warm Community</h3>
+          <p class="exp-desc">A comfortable, welcoming neighborhood hub designed for creators, coffee lovers, and good conversations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" id="menu">
+    <div class="container text-center">
+      <span class="section-tag">Tasteful Selection</span>
+      <h2 class="section-title">Explore Our Menu</h2>
+      <p class="section-desc">Sample a few of our favorite offerings. Full menu with daily specials available in-store.</p>
+
+      <div class="menu-tabs">
+        <button class="tab-btn active" onclick="switchTab(event, 'coffee')">Coffee & Espresso</button>
+        <button class="tab-btn" onclick="switchTab(event, 'food')">Food & Bakery</button>
+      </div>
+
+      <div id="coffee" class="menu-category active">
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Espresso (Single / Double)</h4>
+            <p>Rich, balanced shot with bright acidity and smooth crema</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Classic Americano</h4>
+            <p>Espresso diluted with hot water for a clean, bold coffee profile</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Cappuccino</h4>
+            <p>Equal parts espresso, steamed milk, and velvety milk foam</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Café Latte</h4>
+            <p>Smooth espresso topped with steamed milk and a light layer of microfoam</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Dark Mocha</h4>
+            <p>Rich espresso blended with artisanal dark chocolate and velvety milk</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Signature Cold Coffee</h4>
+            <p>Chilled double shot espresso blended creamy over ice</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="food" class="menu-category">
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Gourmet Artisanal Sandwiches</h4>
+            <p>Freshly baked bread filled with seasonal vegetables or cheeses</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Savory Cafe Snacks</h4>
+            <p>Warm quick bites crafted to complement light or dark roasts</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Fresh Pastries & Desserts</h4>
+            <p>Daily rotating selection of cakes, cookies, and sweet delights</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Demitasse Specials</h4>
+            <p>Seasonal culinary creations crafted by our in-house kitchen team</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-notice" style="margin-top: 2rem;">
+        * Prices and daily seasonal specials are available directly at the counter.
+      </div>
+
+      <a href="#location" class="btn btn-primary">Visit Cafe for Full Menu</a>
+    </div>
+  </section>
+
+  <section class="section-padding" style="background-color: var(--bg-warm-alt);">
+    <div class="container">
+      <div class="stats-bar reveal">
+        <div class="stat-item">
+          <div class="stat-number">4.8 / 5</div>
+          <div class="stat-label">Google Rating</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">600+</div>
+          <div class="stat-label">Happy Customer Reviews</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Specialty Arabica Beans</div>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <span class="section-tag">Community Voices</span>
+        <h2 class="section-title">Why People Love Demitasse</h2>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Hands down one of the finest specialty coffee places in Brookefield. The espresso extraction is top-notch and the atmosphere is super peaceful."</p>
+          <div class="review-author">Local Coffee Enthusiast</div>
+          <span class="review-placeholder-tag">[Editable Google Review Placeholder]</span>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Great place to work or catch up with friends. Friendly staff, cozy seating, and excellent cold coffee options!"</p>
+          <div class="review-author">Brookefield Resident</div>
+          <span class="review-placeholder-tag">[Editable Google Review Placeholder]</span>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"You can tell they truly care about coffee and community. A hidden gem in BEML Layout. Highly recommended!"</p>
+          <div class="review-author">Regular Visitor</div>
+          <span class="review-placeholder-tag">[Editable Google Review Placeholder]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" id="gallery">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag">Moments & Brews</span>
+        <h2 class="section-title">Life at Demitasse</h2>
+        <p class="section-desc">A glimpse into our daily coffee preparations, warm space, and food creations.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=800" alt="Espresso Pouring">
+          <div class="gallery-overlay">Specialty Espresso</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=800" alt="Cafe Seating Atmosphere">
+          <div class="gallery-overlay">Warm Atmosphere</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&q=80&w=800" alt="Barista Preparing Coffee">
+          <div class="gallery-overlay">Barista Craft</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=800" alt="Latte Art Cup">
+          <div class="gallery-overlay">Latte Art</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&q=80&w=800" alt="Cafe Food Sandwich">
+          <div class="gallery-overlay">Handcrafted Food</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=800" alt="Exterior Corner">
+          <div class="gallery-overlay">Community Space</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" id="location" style="background-color: var(--bg-warm-alt);">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag">Visit Us</span>
+        <h2 class="section-title">Come Say Hello</h2>
+        <p class="section-desc">We are conveniently located in Brookefield, ready to serve your daily brew.</p>
+      </div>
+
+      <div class="location-grid reveal">
+        <div class="location-info">
+          <div class="info-group">
+            <h4>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Address
+            </h4>
+            <p><strong>Demitasse Coffee</strong><br>BEML Layout 6th Stage, Brookefield,<br>Bengaluru, Karnataka, India</p>
+          </div>
+
+          <div class="info-group">
+            <h4>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Opening Hours
+            </h4>
+            <p>Monday – Sunday<br><strong>11:45 AM – 11:45 PM</strong></p>
+          </div>
+
+          <div class="info-group">
+            <h4>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Contact
+            </h4>
+            <p>Phone: <a href="tel:+919167265681" style="text-decoration: underline;">+91 91672 65681</a></p>
+          </div>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+            <a href="https://maps.google.com/?q=Demitasse+Coffee+Brookefield+Bengaluru" target="_blank" class="btn btn-primary">
+              Get Directions
+            </a>
+            <a href="tel:+919167265681" class="btn btn-secondary">
+              Call Now
+            </a>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.8920155255375!2d77.712!3d12.978!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzQwLjgiTiA3N8KwNDInNDMuMiJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+            allowfullscreen="" 
+            loading="lazy"
+            title="Demitasse Coffee Location Map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding">
+    <div class="container text-center">
+      <span class="section-tag">@demitassecoffee</span>
+      <h2 class="section-title">Follow the Coffee Journey</h2>
+      <p class="section-desc">Stay tuned with our latest pours, seasonal beans, and events on Instagram.</p>
+
+      <div class="insta-grid">
+        <div class="insta-item"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=400" alt="Insta Post"></div>
+        <div class="insta-item"><img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&q=80&w=400" alt="Insta Post"></div>
+        <div class="insta-item"><img src="https://images.unsplash.com/photo-1507138086030-41fe7a883074?auto=format&fit=crop&q=80&w=400" alt="Insta Post"></div>
+        <div class="insta-item"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=80&w=400" alt="Insta Post"></div>
+      </div>
+
+      <a href="https://instagram.com" target="_blank" class="btn btn-secondary">Follow on Instagram</a>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Your Next Coffee Is Waiting.</h2>
+      <p style="font-size: 1.1rem; max-width: 500px; margin: 0 auto 2rem auto; opacity: 0.9;">
+        Drop by today for exceptional roasts, freshly prepared snacks, and good conversation.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="https://maps.google.com/?q=Demitasse+Coffee+Brookefield+Bengaluru" target="_blank" class="btn btn-light">Get Directions</a>
+        <a href="tel:+919167265681" class="btn btn-primary">Call Now</a>
+        <a href="#menu" class="btn btn-secondary" style="border-color: #ffffff; color: #ffffff;">View Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-title">DEMITASSE COFFEE</div>
+          <p style="font-size: 0.85rem; margin-top: 0.5rem; margin-bottom: 1.25rem;">
+            “A Small Step Towards Best Coffee & Community”
+          </p>
+          <p>BEML Layout 6th Stage, Brookefield,<br>Bengaluru, Karnataka</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#location">Location</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Hours</h4>
+          <p style="line-height: 1.8;">
+            Monday – Sunday<br>
+            <span style="color: #FFFFFF;">11:45 AM – 11:45 PM</span>
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Contact Us</h4>
+          <p style="line-height: 1.8;">
+            Phone: <a href="tel:+919167265681" style="color: #FFFFFF;">+91 91672 65681</a><br>
+            Location: Brookefield, BLR
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; <span id="year"></span> Demitasse Coffee. All rights reserved.</div>
+        <div>Crafted for Specialty Coffee & Community</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year dynamically
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Sticky Header Scroll Effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile Navigation Toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMenu() {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : 'auto';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+
+    // Menu Tab Switcher
+    function switchTab(event, categoryId) {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const categories = document.querySelectorAll('.menu-category');
+
+      tabBtns.forEach(btn => btn.classList.remove('active'));
+      categories.forEach(cat => cat.classList.remove('active'));
+
+      event.currentTarget.classList.add('active');
+      document.getElementById(categoryId).classList.add('active');
+    }
+
+    // Scroll Reveal Animations using IntersectionObserver
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.15
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html><header class="header" id="header">
